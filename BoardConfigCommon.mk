@@ -54,6 +54,7 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # Display
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
 TARGET_USES_FOD_ZPOS := true
 
 # Filesystem
