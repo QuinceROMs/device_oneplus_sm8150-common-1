@@ -370,6 +370,31 @@ vendor/lib64/vendor.display.color@1.4.so
 vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
+# Dolby
+vendor/bin/hw/vendor.dolby_v3_6.hardware.dms360@2.0-service
+vendor/etc/dolby/multimedia_dolby_dax_default.xml
+vendor/etc/init/vendor.dolby_v3_6.hardware.dms360@2.0-service.rc
+vendor/etc/vintf/manifest/manifest_dax_dolby_v3_6.xml
+vendor/lib/libstagefright_soft_ddpdec_v3_6.so
+vendor/lib/libstagefright_soft_ddpdec.so
+vendor/lib/soundfx/libhwdap_v3_6.so
+vendor/lib/soundfx/libswdap_v3_6.so
+vendor/lib/libdapparamstorage_v3_6.so
+vendor/lib/libdeccfg_v3_6.so
+vendor/lib/libdlbdsservice_v3_6.so
+vendor/lib/libqtigef.so
+vendor/lib/libstagefrightdolby.so
+vendor/lib/vendor.dolby_v3_6.hardware.dms360@2.0-impl.so
+vendor/lib/vendor.dolby_v3_6.hardware.dms360@2.0.so
+vendor/lib64/soundfx/libhwdap_v3_6.so
+vendor/lib64/soundfx/libswdap_v3_6.so
+vendor/lib64/libdapparamstorage_v3_6.so
+vendor/lib64/libdeccfg_v3_6.so
+vendor/lib64/libdlbdsservice_v3_6.so
+vendor/lib64/libqtigef.so
+vendor/lib64/vendor.dolby_v3_6.hardware.dms360@2.0-impl.so
+vendor/lib64/vendor.dolby_v3_6.hardware.dms360@2.0.so
+
 # DPM
 system_ext/bin/dpmd
 system_ext/bin/tcmd
