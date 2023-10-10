@@ -132,8 +132,9 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := msmnile
 
-# Disable sparse for ext images
+# Disable sparse on all filesystem images
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
