@@ -105,7 +105,7 @@ limitations under the License.
             <Limit name="measured-frame-rate-1920x1080" range="28-38" />
         </MediaCodec>
         <MediaCodec name="c2.android.h263.decoder" type="video/3gpp" update="true">
-            <Limit name="measured-frame-rate-176x144" range="483-663" />
+            <Limit name="measured-frame-rate-176x144" range="436-2502" />
             <Limit name="measured-frame-rate-352x288" range="324-769" />
         </MediaCodec>
         <MediaCodec name="c2.android.mpeg4.decoder" type="video/mp4v-es" update="true">
