@@ -137,6 +137,10 @@ drm.service.enabled=true
 # Fingerprint
 persist.vendor.qfp=true
 
+# Fling velocities
+ro.min.fling_velocity=140
+ro.max.fling_velocity=20000
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
