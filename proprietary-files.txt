@@ -375,8 +375,7 @@ vendor/bin/hw/vendor.dolby_v3_6.hardware.dms360@2.0-service
 vendor/etc/dolby/multimedia_dolby_dax_default.xml
 vendor/etc/init/vendor.dolby_v3_6.hardware.dms360@2.0-service.rc
 vendor/etc/vintf/manifest/manifest_dax_dolby_v3_6.xml
-vendor/lib/libstagefright_soft_ddpdec_v3_6.so
-vendor/lib/libstagefright_soft_ddpdec.so
+vendor/lib/libstagefright_soft_ddpdec_v3_6.so:vendor/lib/libstagefright_soft_ddpdec.so
 vendor/lib/soundfx/libhwdap_v3_6.so
 vendor/lib/soundfx/libswdap_v3_6.so
 vendor/lib/libdapparamstorage_v3_6.so
