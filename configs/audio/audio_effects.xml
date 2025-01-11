@@ -49,13 +49,9 @@
         <library name="dap_hw" path="libhwdap_v3_6.so"/>
         <!--DOLBY END-->
          <!--DOLBY VQE-->
-        <library name="vqe" path="libswvqe_v351.so"/>
+        <library name="vqe" path="libswvqe_v3_6.so"/>
         <!--DOLBY END-->
         <!-- #endif VENDOR_EDIT-->
-        <!-- #ifdef OPLUS_FEATURE_SURROUND_AUDIO -->
-        <!-- HuozhuChen@PSW.MM.Dolby, 2020/11/11, add for OPLUS_FEATURE_SURROUND_AUDIO -->
-        <library name="ozo_processing" path="libozoprocessing.so"/>
-        <!-- #endif OPLUS_FEATURE_SURROUND_AUDIO -->
     </libraries>
     <effects>
         <effectProxy name="bassboost" library="proxy" uuid="14804144-a5ee-4d24-aa88-0002a5d5c51b">
@@ -117,10 +113,6 @@
         <effect name="vqe" library="vqe" uuid="64a0f614-7fa4-48b8-b081-d59dc954616f"/>
         <!--DOLBY END-->
         <!-- #endif VENDOR_EDIT-->
-        <!-- #ifdef OPLUS_FEATURE_SURROUND_AUDIO -->
-        <!-- HuozhuChen@PSW.MM.Dolby, 2020/11/11, add for OPLUS_FEATURE_SURROUND_AUDIO -->
-        <effect name="ozo" library="ozo_processing" uuid="7e384a3b-7850-4a64-a097-884250d8a737"/>
-        <!-- #endif OPLUS_FEATURE_SURROUND_AUDIO -->
     </effects>
     <postprocess>
     <!-- #ifndef VENDOR_EDIT-->
