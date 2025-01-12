@@ -9,6 +9,9 @@ COMMON_PATH := device/oneplus/sm8150-common
 # Allow building duplicate targets
 BUILD_BROKEN_DUP_RULES := true
 
+# Ignore overriding commands errors
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # A/B
 AB_OTA_UPDATER := true
 
