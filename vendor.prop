@@ -131,6 +131,9 @@ vendor.display.use_smooth_motion=1
 vendor.gralloc.disable_ubwc=0
 ro.surface_flinger.enable_frame_rate_override=false
 
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
 # DPM
 persist.vendor.dpmhalservice.enable=1
 
