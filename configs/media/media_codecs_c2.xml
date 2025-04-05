@@ -144,6 +144,8 @@
             <Feature name="can-swap-width-height" value="1" />
         </MediaCodec>
         <MediaCodec name="c2.qti.hevc.decoder" type="video/hevc" >
+            <Alias name="c2.qti.avc.decoder" />
+            <Alias name="OMX.qcom.video.decoder.avc" />
             <Alias name="OMX.qcom.video.decoder.hevc" />
             <Limit name="size" min="96x96" max="4096x4096" />
             <Limit name="block-count" range="36-36864" /> <!--max-spatial: 4096x2304 -->
@@ -163,6 +165,8 @@
             <Feature name="can-swap-width-height" value="1" />
         </MediaCodec>
         <MediaCodec name="c2.qti.hevc.decoder.secure" type="video/hevc" >
+            <Alias name="c2.qti.avc.decoder.secure" />
+            <Alias name="OMX.qcom.video.decoder.avc.secure" />
             <Alias name="OMX.qcom.video.decoder.hevc.secure" />
             <Limit name="size" min="96x96" max="4096x4096" />
             <Limit name="block-count" range="36-36864" /> <!--max-spatial: 4096x2304 -->
