@@ -68,7 +68,6 @@
         <item>"/vendor/lib/libCB.so"</item>
         <item>"/vendor/lib/libOpenCL.so"</item>
         <item>"/vendor/lib/libadreno_utils.so"</item>
-        <item>"/vendor/lib/libgpudataproducer.so"</item>
         <item>"/vendor/lib/libgsl.so"</item>
         <item>"/vendor/lib/libllvm-glnext.so"</item>
         <item>"/vendor/lib/libllvm-qcom.so"</item>
