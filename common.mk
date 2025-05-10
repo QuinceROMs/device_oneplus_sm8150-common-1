@@ -105,6 +105,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
+$(call soong_config_set,libcameraservice,ext_lib,//device/oneplus/sm8150-common:libcameraservice_extension.opsm8150)
+
 # Configstore
 PRODUCT_PACKAGES += \
     disable_configstore
