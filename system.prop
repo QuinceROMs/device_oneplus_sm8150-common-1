@@ -12,3 +12,4 @@ persist.radio.volte_emergency_support=1
 ro.telephony.dynamic_rat_combine=true
 ro.telephony.max_ca_num=5
 ro.telephony.mimo_4x4_supported=1
+ro.telephony.power_profile=balanced
