@@ -208,6 +208,7 @@ persist.vendor.radio.enable_256qam=1
 persist.vendor.radio.enableadvancedscan=true
 persist.vendor.radio.fd_mimo=1
 persist.vendor.radio.force_ims_enabled=1
+persist.vendor.radio.handover_threshold_db=4
 persist.vendor.radio.hysteresis_db=6
 persist.vendor.radio.ims_ecc=1
 persist.vendor.radio.low_power_mode=1
@@ -223,8 +224,9 @@ persist.vendor.radio.ul_256qam=1
 persist.vendor.radio.ul_64qam=1
 persist.vendor.radio.volte_amr_threshold=-105
 ro.radio.ca_bandwidth_map=1:20,3:15,7:10
-ro.radio.ul_sinr_threshold=20
+ro.radio.serving_rsrp_thresh=-112
 ro.radio.tdd_config_threshold=35
+ro.radio.ul_sinr_threshold=20
 ro.telephony.default_network=22,22
 
 # Sensors
