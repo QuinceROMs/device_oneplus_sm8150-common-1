@@ -204,6 +204,7 @@ persist.vendor.radio.data_con_rprt=2
 persist.vendor.radio.drx_cycle=3
 persist.vendor.radio.drx_ul_threshold=1500
 persist.vendor.radio.dynamic_pwr_ctrl=2
+persist.vendor.radio.dynamic_tx_pwr=1
 persist.vendor.radio.enable_256qam=1
 persist.vendor.radio.enableadvancedscan=true
 persist.vendor.radio.fd_mimo=1
