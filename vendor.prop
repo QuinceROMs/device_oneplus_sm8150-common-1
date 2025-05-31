@@ -225,6 +225,7 @@ persist.vendor.radio.tdd_uldl_ratio=dynamic
 persist.vendor.radio.ul_256qam=1
 persist.vendor.radio.ul_64qam=1
 persist.vendor.radio.volte_amr_threshold=-105
+persist.vendor.radio.volte_sinr_threshold=12
 ro.radio.ca_bandwidth_map=1:20,3:15,7:10
 ro.radio.serving_rsrp_thresh=-112
 ro.radio.tdd_config_threshold=35
