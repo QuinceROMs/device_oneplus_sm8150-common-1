@@ -194,6 +194,7 @@ persist.sys.oem.otg_support=true
 ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
+persist.dbg.volte_avail_rat=1
 persist.vendor.data.iwlan.handover_mode=2
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.beamforming_enabled=1
@@ -216,6 +217,7 @@ persist.vendor.radio.rat_on=adaptive
 persist.vendor.radio.sib16_support=1
 persist.vendor.radio.smart_dds=1
 persist.vendor.radio.ul_64qam=1
+persist.vendor.radio.volte_amr_threshold=-105
 ro.radio.ca_bandwidth_map=1:20,3:15,7:10
 ro.telephony.default_network=22,22
 
