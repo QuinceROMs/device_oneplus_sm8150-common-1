@@ -223,6 +223,7 @@ persist.vendor.radio.paging_group=32
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.pwr_opt=3
 persist.vendor.radio.rat_on=adaptive
+persist.vendor.radio.rb_interference_mitigation=1
 persist.vendor.radio.rrc_early_transition=1
 persist.vendor.radio.rrc_inactivity_timer=5000
 persist.vendor.radio.serving_rsrp_thresh=-110
