@@ -96,6 +96,7 @@ bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
 persist.bluetooth.a2dp_offload.disabled=false
+persist.vendor.bluetooth.a2dp_buffer_overflow_recovery=true
 persist.vendor.bluetooth.controller_idle_timeout=5000
 persist.vendor.bluetooth.le_conn_interval_min=24
 persist.vendor.bluetooth.le_conn_interval_max=40
@@ -112,6 +113,7 @@ persist.vendor.qcom.bluetooth.enable.splita2dp=true
 persist.vendor.qcom.bluetooth.scram.enabled=true
 persist.vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.twsp_state.enabled=false
+vendor.bluetooth.soc.a2dp_buffer_count=8
 ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bluetooth.wipower=false
 
