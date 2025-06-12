@@ -267,7 +267,6 @@ persist.vendor.radio.thermal_ca_throttle=1
 persist.vendor.radio.ul_256qam=1
 persist.vendor.radio.ul_256qam_auto=1
 persist.vendor.radio.ul_64qam=1
-persist.vendor.radio.ul_pwr_ctrl=2
 persist.vendor.radio.volte_amr_threshold=-105
 persist.vendor.radio.volte_sinr_threshold=12
 ro.radio.ca_bandwidth_map=1:20,3:15,7:10
