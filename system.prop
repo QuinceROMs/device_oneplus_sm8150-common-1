@@ -9,6 +9,10 @@ vendor.iop.enable_uxe=1
 # Bluetooth
 bluetooth.afh.min_good_channels=20
 bluetooth.channel_quality_monitoring=1
+bluetooth.le.connection_interval_max=30
+bluetooth.le.connection_interval_min=15
+bluetooth.le.fast_reconnect=1
+bluetooth.le.subrating_factor=4
 ro.bluetooth.afh_channel_classification=ai_enabled
 
 # Radio
