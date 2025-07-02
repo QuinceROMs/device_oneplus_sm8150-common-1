@@ -243,6 +243,7 @@ ro.lmk.kill_heaviest_task=true
 ro.lmk.kill_timeout_ms=15
 
 # Logcat spam
+persist.log.tag.AppOps=S
 persist.log.tag.HWUI=S
 
 # Media
