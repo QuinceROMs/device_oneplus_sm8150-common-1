@@ -151,7 +151,9 @@ on post-fs-data
 
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
+    mkdir /data/vendor/camera/watermark 0770 cameraserver camera
     mkdir /data/vendor/camera/slogan 0777 system system
+    restorecon_recursive /data/vendor/camera
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
