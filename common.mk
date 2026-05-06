@@ -107,8 +107,7 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(TARGET_SHIP_OOSCAM), true)
 PRODUCT_PACKAGES += \
-    OnePlusCamera \
-    OnePlusGallery
+    OnePlusCamera
 
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
