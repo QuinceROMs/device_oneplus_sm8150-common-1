@@ -111,8 +111,7 @@ PRODUCT_PACKAGES += \
 
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.com.google.lens.oem_camera_package=com.oneplus.camera \
-    ro.com.google.lens.oem_image_package=com.oneplus.gallery
+    ro.com.google.lens.oem_camera_package=com.oneplus.camera
 endif
 
 
