@@ -83,6 +83,7 @@
 
     <!-- Packages that should not be frozen by the cached app freezer. -->
     <string-array name="config_defaultCachedAppFreezerExemptionPkgs" translatable="false">
+        <item>com.google.android.mosey</item>
         <item>com.oneplus.camera.service</item>
     </string-array>
 
