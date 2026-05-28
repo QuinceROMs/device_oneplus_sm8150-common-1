@@ -1,3 +1,6 @@
+# Mosey exclusive monitor mode toggle
+genfscon sysfs /module/wlan/parameters/con_mode u:object_r:sysfs_wlan_con_mode:s0
+
 # Motor
 genfscon sysfs /class/motor    u:object_r:sysfs_motor:s0
 

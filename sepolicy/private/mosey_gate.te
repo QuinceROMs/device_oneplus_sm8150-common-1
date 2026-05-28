@@ -1,0 +1,22 @@
+type mosey_gate, domain;
+type mosey_gate_exec, exec_type, file_type, system_file_type;
+type mosey_ctl_prop, property_type, system_property_type;
+
+typeattribute mosey_gate coredomain;
+
+init_daemon_domain(mosey_gate)
+
+allow mosey_gate shell_exec:file rx_file_perms;
+allow mosey_gate system_file:file rx_file_perms;
+
+set_prop(mosey_gate, mosey_ctl_prop)
+
+binder_use(mosey_gate)
+binder_call(mosey_gate, system_server)
+allow mosey_gate settings_service:service_manager find;
+# cmd settings: system_server calls back to the caller and writes the result via fd + fifo.
+binder_call(system_server, mosey_gate)
+allow system_server mosey_gate:fifo_file { read write };
+
+allow mosey_gate kmsg_device:chr_file { open getattr write };
+allow mosey_gate self:fifo_file rw_file_perms;

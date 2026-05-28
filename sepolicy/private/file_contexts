@@ -1,2 +1,6 @@
+# Mosey hands-free gate (con_mode + mosey_server lifecycle)
+/(system_ext|system/system_ext)/bin/mosey_gate\.sh u:object_r:mosey_gate_exec:s0
+/(system_ext|system/system_ext)/bin/mosey_exclusive\.sh u:object_r:mosey_exclusive_exec:s0
+
 # Sensors
 /(system_ext|system/system_ext)/bin/hw/vendor\.lineage\.oplus_als.service    u:object_r:hal_lineage_oplus_als_aidl_exec:s0

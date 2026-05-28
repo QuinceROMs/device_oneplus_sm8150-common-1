@@ -1,5 +1,12 @@
 # Bluetooth
 bluetooth.device_id.vendor_id     u:object_r:exported_bluetooth_prop:s0 exact int
 
+# Mosey exclusive monitor gate (read by HalDeviceManager in system_server)
+sys.mosey.exclusive               u:object_r:mosey_exclusive_prop:s0 exact int
+
+# Control props for the Mosey gate services — narrows mosey_gate off generic ctl_start_prop
+ctl.start$mosey_exclusive_on      u:object_r:mosey_ctl_prop:s0
+ctl.start$mosey_exclusive_off     u:object_r:mosey_ctl_prop:s0
+
 # Sensors
 vendor.sensors.als_correction.    u:object_r:vendor_sensors_als_prop:s0

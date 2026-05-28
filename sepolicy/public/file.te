@@ -1,2 +1,5 @@
+# Mosey exclusive monitor toggle (con_mode module param)
+type sysfs_wlan_con_mode, sysfs_type, fs_type;
+
 # Motor
 type sysfs_motor, sysfs_type, fs_type;

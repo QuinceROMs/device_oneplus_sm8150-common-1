@@ -1,0 +1,28 @@
+type mosey_exclusive, domain;
+type mosey_exclusive_exec, exec_type, file_type, system_file_type;
+type mosey_exclusive_prop, property_type, system_property_type;
+
+typeattribute mosey_exclusive coredomain;
+
+init_daemon_domain(mosey_exclusive)
+
+allow mosey_exclusive shell_exec:file rx_file_perms;
+allow mosey_exclusive system_file:file rx_file_perms;
+
+allow mosey_exclusive sysfs_wlan_con_mode:file rw_file_perms;
+r_dir_file(mosey_exclusive, sysfs_net)
+
+set_prop(mosey_exclusive, ctl_start_prop)
+set_prop(mosey_exclusive, ctl_stop_prop)
+set_prop(mosey_exclusive, mosey_exclusive_prop)
+get_prop(system_server, mosey_exclusive_prop)
+
+binder_use(mosey_exclusive)
+binder_call(mosey_exclusive, system_server)
+allow mosey_exclusive wifi_service:service_manager find;
+# cmd wifi: system_server calls back to the caller and writes the result via fd + fifo.
+binder_call(system_server, mosey_exclusive)
+allow system_server mosey_exclusive:fifo_file { read write };
+
+allow mosey_exclusive kmsg_device:chr_file { open getattr write };
+allow mosey_exclusive self:fifo_file rw_file_perms;
