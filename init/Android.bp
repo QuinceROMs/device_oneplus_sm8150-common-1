@@ -68,3 +68,15 @@ sh_binary {
     src: "init.qcom.sh",
     vendor: true,
 }
+
+sh_binary {
+    name: "mosey_exclusive.sh",
+    src: "mosey_exclusive.sh",
+    system_ext_specific: true,
+}
+
+sh_binary {
+    name: "mosey_gate.sh",
+    src: "mosey_gate.sh",
+    system_ext_specific: true,
+}

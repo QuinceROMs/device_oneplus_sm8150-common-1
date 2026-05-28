@@ -236,6 +236,8 @@ PRODUCT_PACKAGES += \
     init.oplus.rc \
     init.oplus.sh \
     init.qcom.early_boot.sh \
+    mosey_exclusive.sh \
+    mosey_gate.sh \
     init.qcom.rc \
     init.qcom.recovery.rc \
     init.qcom.sh \
@@ -279,6 +281,10 @@ PRODUCT_PACKAGES += \
     libcodec2_hidl@1.0.vendor \
     libcodec2_vndk.vendor \
     libstagefright_foundation-v33
+
+# Mosey: iw for manual con_mode=4 monitor channel-setting (diagnostics)
+PRODUCT_PACKAGES += \
+    iw_vendor
 
 # NFC
 PRODUCT_PACKAGES += \
