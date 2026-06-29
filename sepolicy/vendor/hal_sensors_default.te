@@ -4,3 +4,6 @@ hal_client_domain(hal_sensors_default, hal_lineage_oplus_als)
 get_prop(hal_sensors_default, vendor_sensors_als_prop)
 get_prop(hal_sensors_default, vendor_sensor_prop)
 dontaudit hal_sensors_default vendor_diag_device:chr_file rw_file_perms;
+
+# ION
+allow hal_sensors_default ion_device:chr_file { read open ioctl };

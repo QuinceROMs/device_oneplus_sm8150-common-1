@@ -4,5 +4,8 @@ allow system_server vendor_sysfs_battery_supply:file { getattr open read };
 # Compute
 allow system_server isolated_compute_app:unix_stream_socket { getopt };
 
+# ION
+allow system_server ion_device:chr_file r_file_perms;
+
 # Ultrasound
 allow system_server vendor_proc_ultrasound:dir search;

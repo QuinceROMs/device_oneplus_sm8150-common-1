@@ -1,0 +1,2 @@
+# ION
+allow hal_graphics_allocator_default ion_device:chr_file { read open ioctl };

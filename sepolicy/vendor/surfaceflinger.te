@@ -1,0 +1,2 @@
+# ION
+allow surfaceflinger ion_device:chr_file { read open ioctl };
