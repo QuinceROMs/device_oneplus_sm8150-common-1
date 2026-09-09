@@ -74,6 +74,8 @@ blob_fixups: blob_fixups_user_type = {
     'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
         .add_needed('libaudiobase.so')
         .add_needed('libwfd_shim.so'),
+    'vendor/app/IWlanService/IWlanService.apk': blob_fixup()
+        .apktool_patch('blob-patches/IWlanService-null-credentials.patch'),
     'vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service': blob_fixup()
         .add_needed('libstagefright_foundation-v33.so'),
     'vendor/etc/init/vendor.qti.adsprpc-service.rc': blob_fixup()
