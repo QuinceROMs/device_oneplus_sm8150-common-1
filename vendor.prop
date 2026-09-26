@@ -235,6 +235,8 @@ ro.lmk.kill_timeout_ms=15
 # Logging
 persist.log.tag.QC2Buf=W
 persist.log.tag.QC2V4l2Codec=E
+persist.logd.logpersistd=logcatd
+persist.logd.logpersistd.size=128
 
 # Media
 debug.sdm.support_writeback=0
