@@ -1202,9 +1202,9 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 # Umbra
 system/etc/permissions/privapp-permissions-com.shadov.umbra.xml|f7edbf384ddaf49ff6f5149f4a754844128b3ff9
 system/etc/sysconfig/config-com.shadov.umbra.xml|8d1ff5d34ef410fbfa05fe533108a9ae396ed4a9
--system/priv-app/UmbraControl/UmbraControl.apk;PRESIGNED;SKIPAPKCHECKS|9b90ac4ae64dcf193c8d1368975124c870b978c6
--vendor/lib/soundfx/libumbra.so;DISABLE_CHECKELF|b00351e704159852685fce7a99bc2009f967022c
--vendor/lib64/soundfx/libumbra.so;DISABLE_CHECKELF|8b33e8671dd39ec44ecda9191c4d80bc067d631a
+-system/priv-app/UmbraControl/UmbraControl.apk;PRESIGNED;SKIPAPKCHECKS|c5903413c1ef0f245b43617c2933d2bca43d42c5
+-vendor/lib/soundfx/libumbra.so;DISABLE_CHECKELF|4cabc11a10354716cf67453d259e60ee1dede0e8
+-vendor/lib64/soundfx/libumbra.so;DISABLE_CHECKELF|4a550ed8914e1d209778ddbc4b4ebf007f2da596
 
 # VPP
 odm/etc/tunings.txt
