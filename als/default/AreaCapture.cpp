@@ -12,6 +12,7 @@
 #include <gui/SurfaceComposerClient.h>
 #include <ui/DisplayState.h>
 #include <ui/PixelFormat.h>
+#include <algorithm>
 #include <chrono>
 #include <future>
 
@@ -36,6 +37,10 @@ namespace oplus_als {
 
 namespace {
 
+// The sensor HAL stops waiting for a capture after 100 ms (sensors/CaptureWorker.h) and sends
+// no further request until this call has returned.
+constexpr std::chrono::milliseconds kCaptureTimeout(100);
+
 class CaptureListener : public ::android::gui::BnScreenCaptureListener {
   public:
     ::android::binder::Status onScreenCaptureCompleted(const ScreenCaptureResults& result) override {
@@ -44,13 +49,19 @@ class CaptureListener : public ::android::gui::BnScreenCaptureListener {
     }
 
     bool waitForResults(ScreenCaptureResults* result) {
+        const auto deadline = std::chrono::steady_clock::now() + kCaptureTimeout;
         auto future = mResult.get_future();
-        if (future.wait_for(std::chrono::milliseconds(500)) != std::future_status::ready) {
+        if (future.wait_until(deadline) != std::future_status::ready) {
             return false;
         }
         *result = future.get();
-        return result->fenceResult.ok() &&
-               result->fenceResult.value()->wait(500) == ::android::NO_ERROR;
+        if (!result->fenceResult.ok()) return false;
+        const auto remaining =
+                std::max(std::chrono::duration_cast<std::chrono::milliseconds>(
+                                 deadline - std::chrono::steady_clock::now()),
+                         std::chrono::milliseconds::zero());
+        return result->fenceResult.value()->wait(static_cast<int>(remaining.count())) ==
+               ::android::NO_ERROR;
     }
 
   private:
