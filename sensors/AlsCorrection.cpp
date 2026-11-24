@@ -197,8 +197,8 @@ void AlsCorrection::init() {
     configValid = true;
 }
 
-void AlsCorrection::process(Event& event) {
-    if (!configValid) return;
+bool AlsCorrection::process(Event& event) {
+    if (!configValid) return true;
 
     static CaptureWorker captureWorker(AreaCaptureConnection{});
     AreaRgbCaptureResult screenshot{};
@@ -223,9 +223,7 @@ void AlsCorrection::process(Event& event) {
         }
         if ((now - state.last_update) < ms2ns(100)) {
             ALOGV("Events coming too fast, dropping");
-            // TODO figure out a better way to drop events
-            event.sensorHandle = 0;
-            return;
+            return false;
         }
         state.last_update = now;
     }
@@ -237,9 +235,7 @@ void AlsCorrection::process(Event& event) {
 
         if (!captureWorker.capture(&screenshot)) {
             ALOGE("Could not get area above sensor");
-            // TODO figure out a better way to drop events
-            event.sensorHandle = 0;
-            return;
+            return false;
         }
         ALOGV("Screen color above sensor: %f %f %f", screenshot.r, screenshot.g, screenshot.b);
 
@@ -316,6 +312,7 @@ void AlsCorrection::process(Event& event) {
         event.u.scalar = state.last_corrected_value;
         ALOGV("Reusing cached value: %.0f lux", event.u.scalar);
     }
+    return true;
 }
 
 }  // namespace implementation

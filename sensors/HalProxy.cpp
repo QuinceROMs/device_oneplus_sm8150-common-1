@@ -696,12 +696,21 @@ void HalProxy::postEventsToMessageQueue(const std::vector<Event>& eventsList, si
     // Keep ALS correction and publication ordered without holding up other sensors.
     static std::mutex alsEventMutex;
     std::unique_lock<std::mutex> alsLock(alsEventMutex, std::defer_lock);
-    std::vector<Event> events(eventsList);
-    for (auto& event : events) {
+    std::vector<Event> events;
+    events.reserve(eventsList.size());
+    for (Event event : eventsList) {
         if (static_cast<int>(event.sensorType) == SENSOR_TYPE_QTI_WISE_LIGHT) {
             if (!alsLock.owns_lock()) alsLock.lock();
-            AlsCorrection::process(event);
+            if (!AlsCorrection::process(event)) {
+                if ((mSensors[event.sensorHandle].flags &
+                     static_cast<uint32_t>(V1_0::SensorFlagBits::WAKE_UP)) != 0 &&
+                    numWakeupEvents > 0) {
+                    numWakeupEvents--;
+                }
+                continue;
+            }
         }
+        events.push_back(event);
     }
     size_t numToWrite = 0;
     std::lock_guard<std::mutex> lock(mEventQueueWriteMutex);
