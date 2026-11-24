@@ -511,6 +511,7 @@ void HalProxy::initializeSubHalListFromConfigFile(const char* configFileName) {
 }
 
 void HalProxy::initializeSensorList() {
+    bool hasQtiLightSensor = false;
     for (size_t subHalIndex = 0; subHalIndex < mSubHalList.size(); subHalIndex++) {
         auto result = mSubHalList[subHalIndex]->getSensorsList([&](const auto& list) {
             for (SensorInfo sensor : list) {
@@ -527,7 +528,7 @@ void HalProxy::initializeSensorList() {
                     if (static_cast<int>(sensor.type) == SENSOR_TYPE_QTI_WISE_LIGHT) {
                         sensor.type = SensorType::LIGHT;
                         ALOGV("Replaced QTI Light sensor with standard light sensor");
-                        AlsCorrection::init();
+                        hasQtiLightSensor = true;
                     }
                     mSensors[sensor.sensorHandle] = sensor;
                 }
@@ -537,6 +538,9 @@ void HalProxy::initializeSensorList() {
             ALOGE("getSensorsList call failed for SubHal: %s",
                   mSubHalList[subHalIndex]->getName().c_str());
         }
+    }
+    if (hasQtiLightSensor) {
+        AlsCorrection::init();
     }
 }
 
