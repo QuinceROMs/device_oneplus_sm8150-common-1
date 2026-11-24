@@ -86,10 +86,21 @@ AreaCapture::AreaCapture() {
 
 // See frameworks/base/services/core/jni/com_android_server_display_DisplayControl.cpp and
 // frameworks/base/core/java/android/view/SurfaceControl.java
+// The token is cached until a capture fails, which is how a stale token shows up.
 sp<IBinder> AreaCapture::getInternalDisplayToken() {
-    const auto displayIds = SurfaceComposerClient::getPhysicalDisplayIds();
-    if (displayIds.empty()) return nullptr;
-    return SurfaceComposerClient::getPhysicalDisplayToken(displayIds[0]);
+    std::lock_guard lock(m_display_token_mutex);
+    if (m_display_token == nullptr) {
+        const auto displayIds = SurfaceComposerClient::getPhysicalDisplayIds();
+        if (!displayIds.empty()) {
+            m_display_token = SurfaceComposerClient::getPhysicalDisplayToken(displayIds[0]);
+        }
+    }
+    return m_display_token;
+}
+
+void AreaCapture::forgetInternalDisplayToken() {
+    std::lock_guard lock(m_display_token_mutex);
+    m_display_token = nullptr;
 }
 
 ndk::ScopedAStatus AreaCapture::getAreaBrightness(AreaRgbCaptureResult* _aidl_return) {
@@ -111,12 +122,14 @@ ndk::ScopedAStatus AreaCapture::getAreaBrightness(AreaRgbCaptureResult* _aidl_re
     if (ScreenshotClient::captureDisplay(displayCaptureArgs, captureListener) !=
         ::android::NO_ERROR) {
         ALOGE("Capture failed");
+        forgetInternalDisplayToken();
         return ndk::ScopedAStatus::fromServiceSpecificError(-1);
     }
 
     ScreenCaptureResults captureResults;
     if (!captureListener->waitForResults(&captureResults) || captureResults.buffer == nullptr) {
         ALOGE("Capture result unavailable or fence wait failed");
+        forgetInternalDisplayToken();
         return ndk::ScopedAStatus::fromServiceSpecificError(-1);
     }
 

@@ -7,7 +7,9 @@
 #pragma once
 
 #include <aidl/vendor/lineage/oplus_als/BnAreaCapture.h>
+#include <binder/IBinder.h>
 #include <ui/Rect.h>
+#include <mutex>
 
 namespace aidl {
 namespace vendor {
@@ -20,9 +22,12 @@ class AreaCapture : public BnAreaCapture {
     ndk::ScopedAStatus getAreaBrightness(AreaRgbCaptureResult* _aidl_return) override;
 
   private:
-    static ::android::sp<::android::IBinder> getInternalDisplayToken();
+    ::android::sp<::android::IBinder> getInternalDisplayToken();
+    void forgetInternalDisplayToken();
 
     ::android::Rect m_screenshot_rect;
+    std::mutex m_display_token_mutex;
+    ::android::sp<::android::IBinder> m_display_token;
 };
 
 }  // namespace oplus_als
