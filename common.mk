@@ -165,11 +165,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LunarisDolby
 
-# Doze
-PRODUCT_PACKAGES += \
-    OplusDoze \
-    OplusDozeResCommon
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
