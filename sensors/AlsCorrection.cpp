@@ -76,6 +76,8 @@ static struct {
     float hyst_min, hyst_max;
     float last_corrected_value;
     float last_agc_gain;
+    bool has_corrected_value;
+    bool capture_failing;
 } state = {
     .last_update = 0,
     .force_update = true,
@@ -234,8 +236,18 @@ bool AlsCorrection::process(Event& event) {
                 && (sensor_raw_calibrated < 10.0 || sensor_raw_calibrated > (5.0 / .07)))) {
 
         if (!captureWorker.capture(&screenshot)) {
-            ALOGE("Could not get area above sensor");
-            return false;
+            if (!state.capture_failing) {
+                ALOGE("Could not get area above sensor");
+                state.capture_failing = true;
+            }
+            if (!state.has_corrected_value) return false;
+            event.u.scalar = state.last_corrected_value;
+            ALOGV("Reusing cached value: %.0f lux", event.u.scalar);
+            return true;
+        }
+        if (state.capture_failing) {
+            ALOGI("Area above sensor is available again");
+            state.capture_failing = false;
         }
         ALOGV("Screen color above sensor: %f %f %f", screenshot.r, screenshot.g, screenshot.b);
 
@@ -301,6 +313,7 @@ bool AlsCorrection::process(Event& event) {
             sensor_corrected = std::max(sensor_corrected - 14.0, 0.0);
             event.u.scalar = sensor_corrected;
             state.last_corrected_value = sensor_corrected;
+            state.has_corrected_value = true;
             ALOGV("Fully corrected sensor value: %.0f lux", sensor_corrected);
         } else {
             event.u.scalar = state.last_corrected_value;
