@@ -1,21 +1,41 @@
 #!/system/bin/sh
-# Attach Umbra to all post-process streams at boot.
+# Apply the Umbra app's boot-time switches to the audio effects config.
 # The vendor partition is read-only, so the patched config is assembled in
 # /data/vendor and init bind-mounts it over the stock one before audioserver
 # starts (audio_effects.xml is read once, at audioserver startup). The copy
 # keeps its umbra_data_file label; audioserver is granted read in sepolicy.
+#
+# libumbra.so mirrors these switches into /data/vendor/umbra from the audio
+# HAL. It writes them after this script has run, so a change takes effect on
+# the next boot.
 
 SRC=/vendor/etc/audio_effects.xml
 OUT=/data/vendor/umbra/audio_effects.xml
 
-STREAMS="music patch rerouting voice_call ring alarm notification assistant"
+# Post-process attachment: "1 [games] [calls] [system]" attaches Umbra to the
+# music stream and to the streams of the listed groups, anything else to none.
+CATCHALL_FLAG=/data/vendor/umbra/catchall
 
-# libumbra.so mirrors the app's multichannel switch into this file from the
-# audio HAL: "1 <uuids>" hands the spatializer to Umbra in place of the listed
-# effects, anything else keeps the stock one. It is written after this script
-# has run, so a change takes effect on the next boot.
+# Multichannel: "1 <uuids>" hands the spatializer to Umbra in place of the
+# listed effects, anything else keeps the stock one.
 SPATIAL_FLAG=/data/vendor/umbra/spatial
 SPATIAL_UUID=a987e55e-ec24-48a7-8079-9a16922b4593
+
+_catchall=
+[ -r "$CATCHALL_FLAG" ] && read -r _catchall < "$CATCHALL_FLAG"
+STREAMS=
+set -- $_catchall
+if [ "$1" = 1 ]; then
+    STREAMS=music
+    shift
+    for _g in "$@"; do
+        case "$_g" in
+            games) STREAMS="$STREAMS patch rerouting" ;;
+            calls) STREAMS="$STREAMS voice_call" ;;
+            system) STREAMS="$STREAMS ring alarm notification assistant" ;;
+        esac
+    done
+fi
 
 cp -f "$SRC" "$OUT.tmp" || exit 1
 
