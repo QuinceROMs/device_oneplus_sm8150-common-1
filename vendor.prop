@@ -152,7 +152,6 @@ vendor.audio.dolby.ds2.enabled=false
 vendor.audio.dolby.ds2.hardbypass=false
 
 # Dolby & Audio
-ro.audio.monitorRotation=true
 ro.vendor.audio.dolby.dax.support=true
 ro.vendor.audio.dolby.surround.enable=true
 
@@ -191,7 +190,6 @@ vendor.gatekeeper.disable_spu=true
 
 # Graphics
 debug.egl.hw=0
-debug.graphics.game_default_frame_rate.disabled=true
 debug.sf.enable_adpf_cpu_hint=true
 debug.sf.enable_egl_image_tracker=0
 debug.sf.enable_gl_backpressure=0
@@ -210,7 +208,6 @@ ro.surface_flinger.max_virtual_display_dimension=4096
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.set_idle_timer_ms=4000
 ro.surface_flinger.set_touch_timer_ms=4000
-ro.surface_flinger.supports_background_blur=1
 ro.surface_flinger.use_color_management=true
 ro.surface_flinger.wcg_composition_dataspace=143261696
 
@@ -239,9 +236,6 @@ ro.netflix.bsp_rev=Q855-16947-1
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-
-# QTI
-ro.vendor.qti.va_aosp.support=1
 
 # QTI Mem Optimisation
 persist.vendor.sys.memplus.enable=false
