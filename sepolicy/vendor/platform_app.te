@@ -1,3 +1,7 @@
+# Camera
+allow platform_app_36 vendor_sysfs_battery_supply:dir search;
+allow platform_app_36 vendor_sysfs_battery_supply:file r_file_perms;
+
 # To find and bind hal_wlc
 allow platform_app hal_wlc_hwservice:hwservice_manager find;
 binder_call(platform_app, hal_wlc)
